@@ -35,7 +35,7 @@ echo " 2) $USER_NAME-arch"
 echo " 3) workstation"
 echo " 4) Outro (digite manualmente)"
 
-read -rp "Escolha uma opção (1-5): " HOST_OPT
+read -rp "Escolha uma opção (1-4): " HOST_OPT
 case "$HOST_OPT" in
   1) HOSTNAME="$USER_NAME-hypr";;
   2) HOSTNAME="$USER_NAME-arch";;
@@ -185,7 +185,7 @@ echo "root:$ROOT_PASS" | chpasswd
 echo "Criando usuário $USER_NAME"
 useradd -m -G wheel -s /bin/bash $USER_NAME
 echo "$USER_NAME:$USER_PASS" | chpasswd
-sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
+sed -i 's/^ %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
 
 # 12.7 Instalar e habilitar NetworkManager
 pacman -S --noconfirm networkmanager
